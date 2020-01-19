@@ -11,25 +11,27 @@ class ProductsController extends Controller
         return Product::all();
     }
 
+    
+
     public function store(Request $request){
-        return Product::create($request->all());
+        
+         $Produto=  Product::create($request->all());
+         return $Produto;
     }
 
-    public function excluir(Request $request){
-        Product::delete($request->where($request->id));
-        return 'Produto'.$request->title.' foi deletado';
+    public function update(Request $request,Product $prodcut){
+        $prodcut = Product::find($request->id);
+        //Posicionando no elemento que estou procurando
+        $prodcut->title = $request->title;
+        $prodcut->body = $request->body;
+        //Alterando ele com os parâmetros recebidos na request
+        $prodcut->save();
+        //Salvando ele no banco
+        return $prodcut;
+    }
+    
+    public function show(Request $request, Product $prodcut ){
+        return Product::find($request->id);
     }
 
-    public function update(Request $request,Prodcut $prodcut){
-        $product->update($request0>all());
-        return $product;
-    }
-
-    public function listar($id,Product $produto){
-        Product::withoutGlobalScope('id');
-        //$produto->where('id','=',$id);
-        dd($id);
-        return 'produto aí o infeliz'.$produto;
-        // return Product::selectOne()->whereRaw($id);
-    }
 }

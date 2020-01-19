@@ -18,5 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::prefix('/v1')->group(function(){
     Route::get('/products','ProductsController@index');
+    Route::post('/products','ProductsController@store');
+    Route::put('/products/id/{id}','ProductsController@update');
+    Route::get('/products/id/{id}','ProductsController@show');
+
+
 });
 
