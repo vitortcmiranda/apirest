@@ -33,5 +33,11 @@ class ProductsController extends Controller
     public function show(Request $request, Product $prodcut ){
         return Product::find($request->id);
     }
+    
+    public function delete(Request $request, Product $prodcut ){
+       $Produto = Product::find($request->id);
+       $Produto->delete();
+       return $Produto;
+    }
 
 }
