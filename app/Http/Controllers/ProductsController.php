@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\requests\ProductsRequest as Request;
 use App\Product;
 class ProductsController extends Controller
 {
@@ -34,7 +34,7 @@ class ProductsController extends Controller
         return Product::find($request->id);
     }
     
-    public function delete(Request $request, Product $prodcut ){
+    public function destroy(Request $request, Product $prodcut ){
        $Produto = Product::find($request->id);
        $Produto->delete();
        return $Produto;

@@ -21,8 +21,11 @@ Route::prefix('/v1')->group(function(){
     Route::post('/products','ProductsController@store');
     Route::put('/products/id/{id}','ProductsController@update');
     Route::get('/products/id/{id}','ProductsController@show');
-    Route::delete('/products/id/{id}','ProductsController@delete');
+    Route::delete('/products/id/{id}','ProductsController@destroy');
 
+    Route::resources([
+        'users'=> 'UsersController',
+    ]);
 
 
 });
